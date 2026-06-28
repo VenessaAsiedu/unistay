@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Start-Process \"C:\\\\Program Files\\\\PostgreSQL\\\\17\\\\bin\\\\stackbuilder.exe\")",
+      "PowerShell(Get-Process stackbuilder -ErrorAction SilentlyContinue)",
+      "PowerShell($ErrorActionPreference='SilentlyContinue')",
+      "PowerShell(try { Restart-Service postgresql-x64-17 -Force -ErrorAction Stop; Write-Output \"Service restarted OK\" } catch { Write-Output \"RESTART FAILED: $\\($_.Exception.Message\\)\" }; Get-Service postgresql-x64-17 | Select-Object Name, Status)",
+      "PowerShell(git push -u origin master 2>&1)",
+      "PowerShell(git push origin master:main 2>&1)",
+      "PowerShell(git push origin master:main --force 2>&1)"
+    ]
+  }
+}
