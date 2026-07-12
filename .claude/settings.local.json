@@ -7,7 +7,17 @@
       "PowerShell(try { Restart-Service postgresql-x64-17 -Force -ErrorAction Stop; Write-Output \"Service restarted OK\" } catch { Write-Output \"RESTART FAILED: $\\($_.Exception.Message\\)\" }; Get-Service postgresql-x64-17 | Select-Object Name, Status)",
       "PowerShell(git push -u origin master 2>&1)",
       "PowerShell(git push origin master:main 2>&1)",
-      "PowerShell(git push origin master:main --force 2>&1)"
+      "PowerShell(git push origin master:main --force 2>&1)",
+      "Bash(npm run *)",
+      "Bash(grep -o 'DATABASE_URL=.\\\\{0,15\\\\}' .env)",
+      "Bash(npx prisma *)",
+      "Bash(npm install *)",
+      "Read(//c/c/Users/asied/Desktop/UNISTAY1/server/**)",
+      "Read(//c/c/Users/asied/Desktop/UNISTAY1/server/src/**)",
+      "Bash(node -e ' *)",
+      "Bash(netstat -ano)",
+      "PowerShell(foreach \\($p in @\\(@{Port=5432;Pid=6016},@{Port=5433;Pid=15344}\\)\\) { try { $proc = Get-Process -Id $p.Pid -ErrorAction Stop; $path = \\(Get-CimInstance Win32_Process -Filter \"ProcessId=$\\($p.Pid\\)\"\\).ExecutablePath; Write-Output \\(\"Port {0}: PID {1}  {2}`n         {3}\" -f $p.Port,$p.Pid,$proc.ProcessName,$path\\) } catch { Write-Output \\(\"Port {0}: PID {1} not found\" -f $p.Port,$p.Pid\\) } })",
+      "PowerShell(foreach \\($svc in 'postgresql-x64-17','postgresql-x64-18'\\) { try { $spid = \\(Get-CimInstance Win32_Service -Filter \"Name='$svc'\"\\).ProcessId; $port = switch \\($spid\\) { 6016 {'5432'} 15344 {'5433'} default {\"\\(pid $spid - unknown\\)\"} }; Write-Output \\(\"{0}  ->  PID {1}  ->  port {2}\" -f $svc, $spid, $port\\) } catch { Write-Output \\(\"{0}: error {1}\" -f $svc, $_.Exception.Message\\) } })"
     ]
   }
 }

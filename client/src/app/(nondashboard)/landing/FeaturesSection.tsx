@@ -1,9 +1,9 @@
 "use client";
 
-import React from 'react';
+import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from 'next/link';
+import Link from "next/link";
 
 const containerVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -36,7 +36,7 @@ const FeaturesSection = () => {
           variants={itemVariants}
           className="text-3xl font-bold text-center mb-12 w-full sm:w-2/3 mx-auto"
         >
-          Quickly find the hostels you need using our effective search filters
+          Quickly find the home you want using our effective search filters!
         </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 xl:gap-16">
           {[0, 1, 2].map((index) => (
@@ -45,15 +45,15 @@ const FeaturesSection = () => {
                 imageSrc={`/landing-search${3 - index}.png`}
                 title={
                   [
-                    "Trustworthy and verified Listing",
+                    "Trustworthy and Verified Listings",
                     "Browse Rental Listings with Ease",
-                    "Simply Your Rental Search",
+                    "Simplify Your Rental Search with Advanced",
                   ][index]
                 }
                 description={
                   [
                     "Discover the best rental options with user reviews and ratings.",
-                    "Access to user reviews and ratings for better understanding of rental options.",
+                    "Get access to user reviews and ratings for a better understanding of rental options.",
                     "Find trustworthy and verified rental listings to ensure a hassle-free experience.",
                   ][index]
                 }
