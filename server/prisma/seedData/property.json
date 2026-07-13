@@ -7,8 +7,8 @@
     "securityDeposit": 1500,
     "applicationFee": 50,
     "photoUrls": [
-      "https://example.com/apartment1_1.jpg",
-      "https://example.com/apartment1_2.jpg"
+      "/singlelisting-2.jpg",
+      "/singlelisting-3.jpg"
     ],
     "amenities": [
       "AirConditioning",
@@ -37,8 +37,8 @@
     "securityDeposit": 2000,
     "applicationFee": 75,
     "photoUrls": [
-      "https://example.com/beachhouse1.jpg",
-      "https://example.com/beachhouse2.jpg"
+      "/singlelisting-3.jpg",
+      "/landing-splash.jpg"
     ],
     "amenities": [
       "AirConditioning",
@@ -68,8 +68,8 @@
     "securityDeposit": 2200,
     "applicationFee": 60,
     "photoUrls": [
-      "https://example.com/cityloft1.jpg",
-      "https://example.com/cityloft2.jpg"
+      "/landing-splash.jpg",
+      "/singlelisting-2.jpg"
     ],
     "amenities": [
       "AirConditioning",
@@ -98,8 +98,8 @@
     "securityDeposit": 2500,
     "applicationFee": 80,
     "photoUrls": [
-      "https://example.com/familyhome1.jpg",
-      "https://example.com/familyhome2.jpg"
+      "/singlelisting-2.jpg",
+      "/singlelisting-3.jpg"
     ],
     "amenities": [
       "AirConditioning",
@@ -128,8 +128,8 @@
     "securityDeposit": 5000,
     "applicationFee": 100,
     "photoUrls": [
-      "https://example.com/penthouse1.jpg",
-      "https://example.com/penthouse2.jpg"
+      "/singlelisting-3.jpg",
+      "/landing-splash.jpg"
     ],
     "amenities": [
       "AirConditioning",
@@ -158,8 +158,8 @@
     "securityDeposit": 1200,
     "applicationFee": 40,
     "photoUrls": [
-      "https://example.com/studio1.jpg",
-      "https://example.com/studio2.jpg"
+      "/landing-splash.jpg",
+      "/singlelisting-2.jpg"
     ],
     "amenities": [
       "AirConditioning",
@@ -186,8 +186,8 @@
     "securityDeposit": 3000,
     "applicationFee": 70,
     "photoUrls": [
-      "https://example.com/brownstone1.jpg",
-      "https://example.com/brownstone2.jpg"
+      "/singlelisting-2.jpg",
+      "/singlelisting-3.jpg"
     ],
     "amenities": [
       "AirConditioning",
@@ -215,8 +215,8 @@
     "securityDeposit": 1000,
     "applicationFee": 30,
     "photoUrls": [
-      "https://example.com/micro1.jpg",
-      "https://example.com/micro2.jpg"
+      "/singlelisting-3.jpg",
+      "/landing-splash.jpg"
     ],
     "amenities": [
       "AirConditioning",
@@ -243,8 +243,8 @@
     "securityDeposit": 1800,
     "applicationFee": 60,
     "photoUrls": [
-      "https://example.com/cabin1.jpg",
-      "https://example.com/cabin2.jpg"
+      "/landing-splash.jpg",
+      "/singlelisting-2.jpg"
     ],
     "amenities": [
       "WasherDryer",
@@ -272,8 +272,8 @@
     "securityDeposit": 900,
     "applicationFee": 35,
     "photoUrls": [
-      "https://example.com/tinyhouse1.jpg",
-      "https://example.com/tinyhouse2.jpg"
+      "/singlelisting-2.jpg",
+      "/singlelisting-3.jpg"
     ],
     "amenities": [
       "WasherDryer",
@@ -301,8 +301,8 @@
     "securityDeposit": 1200,
     "applicationFee": 50,
     "photoUrls": [
-      "https://example.com/accra11_1.jpg",
-      "https://example.com/accra11_2.jpg"
+      "/singlelisting-3.jpg",
+      "/landing-splash.jpg"
     ],
     "amenities": [
       "AirConditioning",
@@ -331,8 +331,8 @@
     "securityDeposit": 1800,
     "applicationFee": 50,
     "photoUrls": [
-      "https://example.com/accra12_1.jpg",
-      "https://example.com/accra12_2.jpg"
+      "/landing-splash.jpg",
+      "/singlelisting-2.jpg"
     ],
     "amenities": [
       "AirConditioning",
@@ -361,8 +361,8 @@
     "securityDeposit": 2500,
     "applicationFee": 50,
     "photoUrls": [
-      "https://example.com/accra13_1.jpg",
-      "https://example.com/accra13_2.jpg"
+      "/singlelisting-2.jpg",
+      "/singlelisting-3.jpg"
     ],
     "amenities": [
       "AirConditioning",
@@ -391,8 +391,8 @@
     "securityDeposit": 2000,
     "applicationFee": 50,
     "photoUrls": [
-      "https://example.com/accra14_1.jpg",
-      "https://example.com/accra14_2.jpg"
+      "/singlelisting-3.jpg",
+      "/landing-splash.jpg"
     ],
     "amenities": [
       "AirConditioning",
@@ -421,8 +421,8 @@
     "securityDeposit": 3000,
     "applicationFee": 50,
     "photoUrls": [
-      "https://example.com/accra15_1.jpg",
-      "https://example.com/accra15_2.jpg"
+      "/landing-splash.jpg",
+      "/singlelisting-2.jpg"
     ],
     "amenities": [
       "AirConditioning",
