@@ -27,18 +27,6 @@ const Card = ({
             onError={() => setImgSrc("/placeholder.jpg")}
           />
         </div>
-        <div className="absolute bottom-4 left-4 flex gap-2">
-          {property.isPetsAllowed && (
-            <span className="bg-white/80 text-black text-xs font-semibold px-2 py-1 rounded-full">
-              Pets Allowed
-            </span>
-          )}
-          {property.isParkingIncluded && (
-            <span className="bg-white/80 text-black text-xs font-semibold px-2 py-1 rounded-full">
-              Parking Included
-            </span>
-          )}
-        </div>
         {showFavoriteButton && (
           <button
             className="absolute bottom-4 right-4 bg-white hover:bg-white/90 rounded-full p-2 cursor-pointer"
@@ -80,7 +68,7 @@ const Card = ({
             </span>
           </div>
           <p className="text-lg font-bold mb-3">
-            ${property.pricePerMonth.toFixed(0)}{" "}
+            ₵{property.pricePerMonth.toFixed(0)}{" "}
             <span className="text-gray-600 text-base font-normal"> /month</span>
           </p>
         </div>

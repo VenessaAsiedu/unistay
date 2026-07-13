@@ -23,8 +23,6 @@ const NewProperty = () => {
       pricePerMonth: 1000,
       securityDeposit: 500,
       applicationFee: 100,
-      isPetsAllowed: true,
-      isParkingIncluded: true,
       photoUrls: [],
       amenities: "",
       highlights: "",
@@ -132,18 +130,6 @@ const NewProperty = () => {
                   name="squareFeet"
                   label="Square Feet"
                   type="number"
-                />
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                <CustomFormField
-                  name="isPetsAllowed"
-                  label="Pets Allowed"
-                  type="switch"
-                />
-                <CustomFormField
-                  name="isParkingIncluded"
-                  label="Parking Included"
-                  type="switch"
                 />
               </div>
               <div className="mt-4">

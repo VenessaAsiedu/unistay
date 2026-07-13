@@ -271,8 +271,6 @@ export const createProperty = async (
           typeof propertyData.highlights === "string"
             ? propertyData.highlights.split(",")
             : [],
-        isPetsAllowed: propertyData.isPetsAllowed === "true",
-        isParkingIncluded: propertyData.isParkingIncluded === "true",
         pricePerMonth: parseFloat(propertyData.pricePerMonth),
         securityDeposit: parseFloat(propertyData.securityDeposit),
         applicationFee: parseFloat(propertyData.applicationFee),

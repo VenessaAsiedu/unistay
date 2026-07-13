@@ -88,5 +88,50 @@
     "address": "789 Rodeo Dr",
     "postalCode": "90210",
     "coordinates": "POINT(-118.400356 34.073620)"
+  },
+  {
+    "id": 11,
+    "country": "Ghana",
+    "city": "East Legon",
+    "state": "Greater Accra",
+    "address": "12 Lagos Avenue",
+    "postalCode": "GA-183-4567",
+    "coordinates": "POINT(-0.1667 5.635)"
+  },
+  {
+    "id": 12,
+    "country": "Ghana",
+    "city": "Osu",
+    "state": "Greater Accra",
+    "address": "5 Oxford Street",
+    "postalCode": "GA-145-1122",
+    "coordinates": "POINT(-0.1826 5.5556)"
+  },
+  {
+    "id": 13,
+    "country": "Ghana",
+    "city": "Airport Residential",
+    "state": "Greater Accra",
+    "address": "8 Aviation Road",
+    "postalCode": "GA-107-9080",
+    "coordinates": "POINT(-0.1766 5.605)"
+  },
+  {
+    "id": 14,
+    "country": "Ghana",
+    "city": "Cantonments",
+    "state": "Greater Accra",
+    "address": "21 Switchback Road",
+    "postalCode": "GA-132-4455",
+    "coordinates": "POINT(-0.173 5.568)"
+  },
+  {
+    "id": 15,
+    "country": "Ghana",
+    "city": "Labone",
+    "state": "Greater Accra",
+    "address": "3 North Labone Close",
+    "postalCode": "GA-155-6677",
+    "coordinates": "POINT(-0.1739 5.5623)"
   }
 ]

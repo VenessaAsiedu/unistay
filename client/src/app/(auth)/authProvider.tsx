@@ -12,6 +12,7 @@ import {
 } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 import { useRouter, usePathname } from "next/navigation";
+import Image from "next/image";
 
 // https://docs.amplify.aws/gen1/javascript/tools/libraries/configure-categories/
 Amplify.configure({
@@ -29,9 +30,9 @@ const components = {
     return (
       <View className="mt-4 mb-7">
         <Heading level={3} className="!text-2xl !font-bold">
-          RENT
+          UNI
           <span className="text-secondary-500 font-light hover:!text-primary-300">
-            IFUL
+            STAY
           </span>
         </Heading>
         <p className="text-muted-foreground mt-2">
@@ -160,6 +161,43 @@ const Auth = ({ children }: { children: React.ReactNode }) => {
     return <>{children}</>;
   }
 
+  // Auth pages get the split image + form layout
+  if (isAuthPage) {
+    return (
+      <div className="flex min-h-screen w-full">
+        {/* Left image panel */}
+        <div className="hidden lg:flex lg:w-1/2 relative">
+          <Image
+            src="/auth-image.avif"
+            alt="Find your sweet home"
+            fill
+            priority
+            sizes="50vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-black/30" />
+          <p className="absolute top-10 right-8 text-white text-2xl font-semibold text-right">
+            Find your sweet home
+          </p>
+        </div>
+
+        {/* Right form panel */}
+        <div className="flex w-full lg:w-1/2 items-center justify-center p-8 bg-white">
+          <div className="w-full max-w-md">
+            <Authenticator
+              initialState={pathname.includes("signup") ? "signUp" : "signIn"}
+              components={components}
+              formFields={formFields}
+            >
+              {() => <>{children}</>}
+            </Authenticator>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Dashboard pages (manager/tenants) still get the standard Authenticator gate
   return (
     <div className="h-full">
       <Authenticator

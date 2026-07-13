@@ -74,10 +74,8 @@ const PropertyDetails = ({ propertyId }: PropertyDetailsProps) => {
           additional fees and utilities.
         </p>
         <Tabs defaultValue="required-fees" className="mt-8">
-          <TabsList className="grid w-full grid-cols-3">
+          <TabsList className="grid w-full grid-cols-1">
             <TabsTrigger value="required-fees">Required Fees</TabsTrigger>
-            <TabsTrigger value="pets">Pets</TabsTrigger>
-            <TabsTrigger value="parking">Parking</TabsTrigger>
           </TabsList>
           <TabsContent value="required-fees" className="w-1/3">
             <p className="font-semibold mt-5 mb-2">One time move in fees</p>
@@ -87,7 +85,7 @@ const PropertyDetails = ({ propertyId }: PropertyDetailsProps) => {
                 Application Fee
               </span>
               <span className="text-primary-700">
-                ${property.applicationFee}
+                ₵{property.applicationFee}
               </span>
             </div>
             <hr />
@@ -96,21 +94,10 @@ const PropertyDetails = ({ propertyId }: PropertyDetailsProps) => {
                 Security Deposit
               </span>
               <span className="text-primary-700">
-                ${property.securityDeposit}
+                ₵{property.securityDeposit}
               </span>
             </div>
             <hr />
-          </TabsContent>
-          <TabsContent value="pets">
-            <p className="font-semibold mt-5 mb-2">
-              Pets are {property.isPetsAllowed ? "allowed" : "not allowed"}
-            </p>
-          </TabsContent>
-          <TabsContent value="parking">
-            <p className="font-semibold mt-5 mb-2">
-              Parking is{" "}
-              {property.isParkingIncluded ? "included" : "not included"}
-            </p>
           </TabsContent>
         </Tabs>
       </div>

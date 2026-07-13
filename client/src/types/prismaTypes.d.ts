@@ -1745,8 +1745,6 @@ export namespace Prisma {
     pricePerMonth: number | null
     securityDeposit: number | null
     applicationFee: number | null
-    isPetsAllowed: boolean | null
-    isParkingIncluded: boolean | null
     beds: number | null
     baths: number | null
     squareFeet: number | null
@@ -1765,8 +1763,6 @@ export namespace Prisma {
     pricePerMonth: number | null
     securityDeposit: number | null
     applicationFee: number | null
-    isPetsAllowed: boolean | null
-    isParkingIncluded: boolean | null
     beds: number | null
     baths: number | null
     squareFeet: number | null
@@ -1788,8 +1784,6 @@ export namespace Prisma {
     photoUrls: number
     amenities: number
     highlights: number
-    isPetsAllowed: number
-    isParkingIncluded: number
     beds: number
     baths: number
     squareFeet: number
@@ -1836,8 +1830,6 @@ export namespace Prisma {
     pricePerMonth?: true
     securityDeposit?: true
     applicationFee?: true
-    isPetsAllowed?: true
-    isParkingIncluded?: true
     beds?: true
     baths?: true
     squareFeet?: true
@@ -1856,8 +1848,6 @@ export namespace Prisma {
     pricePerMonth?: true
     securityDeposit?: true
     applicationFee?: true
-    isPetsAllowed?: true
-    isParkingIncluded?: true
     beds?: true
     baths?: true
     squareFeet?: true
@@ -1879,8 +1869,6 @@ export namespace Prisma {
     photoUrls?: true
     amenities?: true
     highlights?: true
-    isPetsAllowed?: true
-    isParkingIncluded?: true
     beds?: true
     baths?: true
     squareFeet?: true
@@ -1989,8 +1977,6 @@ export namespace Prisma {
     photoUrls: string[]
     amenities: $Enums.Amenity[]
     highlights: $Enums.Highlight[]
-    isPetsAllowed: boolean
-    isParkingIncluded: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -2031,8 +2017,6 @@ export namespace Prisma {
     photoUrls?: boolean
     amenities?: boolean
     highlights?: boolean
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
     beds?: boolean
     baths?: boolean
     squareFeet?: boolean
@@ -2061,8 +2045,6 @@ export namespace Prisma {
     photoUrls?: boolean
     amenities?: boolean
     highlights?: boolean
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
     beds?: boolean
     baths?: boolean
     squareFeet?: boolean
@@ -2086,8 +2068,6 @@ export namespace Prisma {
     photoUrls?: boolean
     amenities?: boolean
     highlights?: boolean
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
     beds?: boolean
     baths?: boolean
     squareFeet?: boolean
@@ -2111,8 +2091,6 @@ export namespace Prisma {
     photoUrls?: boolean
     amenities?: boolean
     highlights?: boolean
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
     beds?: boolean
     baths?: boolean
     squareFeet?: boolean
@@ -2124,7 +2102,7 @@ export namespace Prisma {
     managerCognitoId?: boolean
   }
 
-  export type PropertyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "pricePerMonth" | "securityDeposit" | "applicationFee" | "photoUrls" | "amenities" | "highlights" | "isPetsAllowed" | "isParkingIncluded" | "beds" | "baths" | "squareFeet" | "propertyType" | "postedDate" | "averageRating" | "numberOfReviews" | "locationId" | "managerCognitoId", ExtArgs["result"]["property"]>
+  export type PropertyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "pricePerMonth" | "securityDeposit" | "applicationFee" | "photoUrls" | "amenities" | "highlights" | "beds" | "baths" | "squareFeet" | "propertyType" | "postedDate" | "averageRating" | "numberOfReviews" | "locationId" | "managerCognitoId", ExtArgs["result"]["property"]>
   export type PropertyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     location?: boolean | LocationDefaultArgs<ExtArgs>
     manager?: boolean | ManagerDefaultArgs<ExtArgs>
@@ -2163,8 +2141,6 @@ export namespace Prisma {
       photoUrls: string[]
       amenities: $Enums.Amenity[]
       highlights: $Enums.Highlight[]
-      isPetsAllowed: boolean
-      isParkingIncluded: boolean
       beds: number
       baths: number
       squareFeet: number
@@ -2612,8 +2588,6 @@ export namespace Prisma {
     readonly photoUrls: FieldRef<"Property", 'String[]'>
     readonly amenities: FieldRef<"Property", 'Amenity[]'>
     readonly highlights: FieldRef<"Property", 'Highlight[]'>
-    readonly isPetsAllowed: FieldRef<"Property", 'Boolean'>
-    readonly isParkingIncluded: FieldRef<"Property", 'Boolean'>
     readonly beds: FieldRef<"Property", 'Int'>
     readonly baths: FieldRef<"Property", 'Float'>
     readonly squareFeet: FieldRef<"Property", 'Int'>
@@ -9925,8 +9899,6 @@ export namespace Prisma {
     photoUrls: 'photoUrls',
     amenities: 'amenities',
     highlights: 'highlights',
-    isPetsAllowed: 'isPetsAllowed',
-    isParkingIncluded: 'isParkingIncluded',
     beds: 'beds',
     baths: 'baths',
     squareFeet: 'squareFeet',
@@ -10117,13 +10089,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Boolean'
-   */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
-    
-
-
-  /**
    * Reference to a field of type 'PropertyType'
    */
   export type EnumPropertyTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PropertyType'>
@@ -10195,8 +10160,6 @@ export namespace Prisma {
     photoUrls?: StringNullableListFilter<"Property">
     amenities?: EnumAmenityNullableListFilter<"Property">
     highlights?: EnumHighlightNullableListFilter<"Property">
-    isPetsAllowed?: BoolFilter<"Property"> | boolean
-    isParkingIncluded?: BoolFilter<"Property"> | boolean
     beds?: IntFilter<"Property"> | number
     baths?: FloatFilter<"Property"> | number
     squareFeet?: IntFilter<"Property"> | number
@@ -10224,8 +10187,6 @@ export namespace Prisma {
     photoUrls?: SortOrder
     amenities?: SortOrder
     highlights?: SortOrder
-    isPetsAllowed?: SortOrder
-    isParkingIncluded?: SortOrder
     beds?: SortOrder
     baths?: SortOrder
     squareFeet?: SortOrder
@@ -10256,8 +10217,6 @@ export namespace Prisma {
     photoUrls?: StringNullableListFilter<"Property">
     amenities?: EnumAmenityNullableListFilter<"Property">
     highlights?: EnumHighlightNullableListFilter<"Property">
-    isPetsAllowed?: BoolFilter<"Property"> | boolean
-    isParkingIncluded?: BoolFilter<"Property"> | boolean
     beds?: IntFilter<"Property"> | number
     baths?: FloatFilter<"Property"> | number
     squareFeet?: IntFilter<"Property"> | number
@@ -10285,8 +10244,6 @@ export namespace Prisma {
     photoUrls?: SortOrder
     amenities?: SortOrder
     highlights?: SortOrder
-    isPetsAllowed?: SortOrder
-    isParkingIncluded?: SortOrder
     beds?: SortOrder
     baths?: SortOrder
     squareFeet?: SortOrder
@@ -10316,8 +10273,6 @@ export namespace Prisma {
     photoUrls?: StringNullableListFilter<"Property">
     amenities?: EnumAmenityNullableListFilter<"Property">
     highlights?: EnumHighlightNullableListFilter<"Property">
-    isPetsAllowed?: BoolWithAggregatesFilter<"Property"> | boolean
-    isParkingIncluded?: BoolWithAggregatesFilter<"Property"> | boolean
     beds?: IntWithAggregatesFilter<"Property"> | number
     baths?: FloatWithAggregatesFilter<"Property"> | number
     squareFeet?: IntWithAggregatesFilter<"Property"> | number
@@ -10754,8 +10709,6 @@ export namespace Prisma {
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -10781,8 +10734,6 @@ export namespace Prisma {
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -10807,8 +10758,6 @@ export namespace Prisma {
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -10834,8 +10783,6 @@ export namespace Prisma {
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -10861,8 +10808,6 @@ export namespace Prisma {
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -10883,8 +10828,6 @@ export namespace Prisma {
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -10904,8 +10847,6 @@ export namespace Prisma {
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -11364,11 +11305,6 @@ export namespace Prisma {
     isEmpty?: boolean
   }
 
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
   export type EnumPropertyTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.PropertyType | EnumPropertyTypeFieldRefInput<$PrismaModel>
     in?: $Enums.PropertyType[] | ListEnumPropertyTypeFieldRefInput<$PrismaModel>
@@ -11464,8 +11400,6 @@ export namespace Prisma {
     photoUrls?: SortOrder
     amenities?: SortOrder
     highlights?: SortOrder
-    isPetsAllowed?: SortOrder
-    isParkingIncluded?: SortOrder
     beds?: SortOrder
     baths?: SortOrder
     squareFeet?: SortOrder
@@ -11497,8 +11431,6 @@ export namespace Prisma {
     pricePerMonth?: SortOrder
     securityDeposit?: SortOrder
     applicationFee?: SortOrder
-    isPetsAllowed?: SortOrder
-    isParkingIncluded?: SortOrder
     beds?: SortOrder
     baths?: SortOrder
     squareFeet?: SortOrder
@@ -11517,8 +11449,6 @@ export namespace Prisma {
     pricePerMonth?: SortOrder
     securityDeposit?: SortOrder
     applicationFee?: SortOrder
-    isPetsAllowed?: SortOrder
-    isParkingIncluded?: SortOrder
     beds?: SortOrder
     baths?: SortOrder
     squareFeet?: SortOrder
@@ -11591,14 +11521,6 @@ export namespace Prisma {
     _sum?: NestedFloatFilter<$PrismaModel>
     _min?: NestedFloatFilter<$PrismaModel>
     _max?: NestedFloatFilter<$PrismaModel>
-  }
-
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type EnumPropertyTypeWithAggregatesFilter<$PrismaModel = never> = {
@@ -12106,10 +12028,6 @@ export namespace Prisma {
   export type PropertyUpdatehighlightsInput = {
     set?: $Enums.Highlight[]
     push?: $Enums.Highlight | $Enums.Highlight[]
-  }
-
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -12703,11 +12621,6 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
   export type NestedEnumPropertyTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.PropertyType | EnumPropertyTypeFieldRefInput<$PrismaModel>
     in?: $Enums.PropertyType[] | ListEnumPropertyTypeFieldRefInput<$PrismaModel>
@@ -12795,14 +12708,6 @@ export namespace Prisma {
     _sum?: NestedFloatFilter<$PrismaModel>
     _min?: NestedFloatFilter<$PrismaModel>
     _max?: NestedFloatFilter<$PrismaModel>
-  }
-
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NestedEnumPropertyTypeWithAggregatesFilter<$PrismaModel = never> = {
@@ -13223,8 +13128,6 @@ export namespace Prisma {
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -13249,8 +13152,6 @@ export namespace Prisma {
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -13304,8 +13205,6 @@ export namespace Prisma {
     photoUrls?: StringNullableListFilter<"Property">
     amenities?: EnumAmenityNullableListFilter<"Property">
     highlights?: EnumHighlightNullableListFilter<"Property">
-    isPetsAllowed?: BoolFilter<"Property"> | boolean
-    isParkingIncluded?: BoolFilter<"Property"> | boolean
     beds?: IntFilter<"Property"> | number
     baths?: FloatFilter<"Property"> | number
     squareFeet?: IntFilter<"Property"> | number
@@ -13326,8 +13225,6 @@ export namespace Prisma {
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -13352,8 +13249,6 @@ export namespace Prisma {
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -13382,8 +13277,6 @@ export namespace Prisma {
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -13408,8 +13301,6 @@ export namespace Prisma {
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -13566,8 +13457,6 @@ export namespace Prisma {
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -13592,8 +13481,6 @@ export namespace Prisma {
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -13643,8 +13530,6 @@ export namespace Prisma {
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -13669,8 +13554,6 @@ export namespace Prisma {
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -13762,8 +13645,6 @@ export namespace Prisma {
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -13788,8 +13669,6 @@ export namespace Prisma {
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -13877,8 +13756,6 @@ export namespace Prisma {
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -13903,8 +13780,6 @@ export namespace Prisma {
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -14025,8 +13900,6 @@ export namespace Prisma {
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -14051,8 +13924,6 @@ export namespace Prisma {
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -14374,8 +14245,6 @@ export namespace Prisma {
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -14395,8 +14264,6 @@ export namespace Prisma {
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -14421,8 +14288,6 @@ export namespace Prisma {
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -14447,8 +14312,6 @@ export namespace Prisma {
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -14489,8 +14352,6 @@ export namespace Prisma {
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -14515,8 +14376,6 @@ export namespace Prisma {
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -14541,8 +14400,6 @@ export namespace Prisma {
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -14563,8 +14420,6 @@ export namespace Prisma {
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -14589,8 +14444,6 @@ export namespace Prisma {
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -14615,8 +14468,6 @@ export namespace Prisma {
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -14702,8 +14553,6 @@ export namespace Prisma {
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -14728,8 +14577,6 @@ export namespace Prisma {
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -14754,8 +14601,6 @@ export namespace Prisma {
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
     amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -14776,8 +14621,6 @@ export namespace Prisma {
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
     amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
