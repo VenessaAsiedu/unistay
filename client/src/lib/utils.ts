@@ -52,8 +52,31 @@ export const withToast = async <T>(
     return result;
   } catch (err) {
     if (error) toast.error(error);
-    throw err;
+
+    // Do NOT re-throw. This helper is only ever awaited inside RTK Query's
+    // `onQueryStarted`, and RTK calls that hook without a `.catch()`, so a
+    // rejection here escapes as an unhandled promise rejection. RTK rejects
+    // `queryFulfilled` with a plain object — `{ error, isUnhandledError, meta }`
+    // — which has no `message` and stringifies to "[object Object]", which is
+    // exactly what the Next.js dev overlay then shows.
+    //
+    // Swallowing is safe: the failure is already recorded in the RTK Query
+    // cache entry, so components still see `isError` / `error` from the hook.
+    logQueryError(error, err);
+    return undefined;
   }
+};
+
+/** Unwraps RTK Query's rejection shape so the console shows the real cause. */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const logQueryError = (label: string | undefined, err: any) => {
+  const inner = err?.error ?? err;
+  console.error(label ?? "Request failed", {
+    status: inner?.status,
+    data: inner?.data,
+    message: inner?.message ?? inner?.error,
+    raw: err,
+  });
 };
 
 export const createNewUserInDatabase = async (

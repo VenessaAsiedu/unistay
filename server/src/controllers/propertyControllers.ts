@@ -208,10 +208,23 @@ export const createProperty = async (
       ...propertyData
     } = req.body;
 
+    // NOTE: the bucket name comes from AWS_BUCKET_NAME (as defined in .env).
+    // This previously read S3_BUCKET_NAME, which is never set, so every upload
+    // failed with an opaque S3 error and the whole request 500'd.
+    const bucket = process.env.AWS_BUCKET_NAME;
+    if (files?.length && !bucket) {
+      res.status(500).json({
+        message:
+          "Photo upload is not configured: set AWS_BUCKET_NAME, AWS_REGION, " +
+          "AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY in server/.env",
+      });
+      return;
+    }
+
     const photoUrls = await Promise.all(
       files.map(async (file) => {
         const uploadParams = {
-          Bucket: process.env.S3_BUCKET_NAME!,
+          Bucket: bucket!,
           Key: `properties/${Date.now()}-${file.originalname}`,
           Body: file.buffer,
           ContentType: file.mimetype,
