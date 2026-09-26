@@ -1,6 +1,7 @@
 import { Bath, Bed, Heart, House, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const Card = ({
@@ -10,12 +11,18 @@ const Card = ({
   showFavoriteButton = true,
   propertyLink,
 }: CardProps) => {
+  const router = useRouter();
   const [imgSrc, setImgSrc] = useState(
     property.photoUrls?.[0] || "/placeholder.jpg"
   );
 
   return (
-    <div className="bg-white rounded-xl overflow-hidden shadow-lg w-full mb-5">
+    <div
+      className={`bg-white rounded-xl overflow-hidden shadow-lg w-full mb-5${
+        propertyLink ? " cursor-pointer hover:shadow-xl transition-shadow" : ""
+      }`}
+      onClick={() => propertyLink && router.push(propertyLink)}
+    >
       <div className="relative">
         <div className="w-full h-48 relative">
           <Image
@@ -30,7 +37,10 @@ const Card = ({
         {showFavoriteButton && (
           <button
             className="absolute bottom-4 right-4 bg-white hover:bg-white/90 rounded-full p-2 cursor-pointer"
-            onClick={onFavoriteToggle}
+            onClick={(e) => {
+              e.stopPropagation();
+              onFavoriteToggle();
+            }}
           >
             <Heart
               className={`w-5 h-5 ${
@@ -47,6 +57,7 @@ const Card = ({
               href={propertyLink}
               className="hover:underline hover:text-blue-600"
               scroll={false}
+              onClick={(e) => e.stopPropagation()}
             >
               {property.name}
             </Link>

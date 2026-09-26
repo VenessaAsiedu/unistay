@@ -51,7 +51,9 @@ export const withToast = async <T>(
     if (success) toast.success(success);
     return result;
   } catch (err) {
-    if (error) toast.error(error);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const serverMessage = (err as any)?.error?.data?.message;
+    if (error) toast.error(serverMessage ? `${error} ${serverMessage}` : error);
 
     // Do NOT re-throw. This helper is only ever awaited inside RTK Query's
     // `onQueryStarted`, and RTK calls that hook without a `.catch()`, so a

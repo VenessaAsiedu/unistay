@@ -9,10 +9,13 @@ import { AmenityEnum, HighlightEnum, PropertyTypeEnum } from "@/lib/constants";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
 const NewProperty = () => {
-  const [createProperty] = useCreatePropertyMutation();
+  const [createProperty, { isLoading: isCreating }] =
+    useCreatePropertyMutation();
+  const router = useRouter();
   const { data: authUser } = useGetAuthUserQuery();
 
   const form = useForm<PropertyFormData>({
@@ -58,7 +61,10 @@ const NewProperty = () => {
 
     formData.append("managerCognitoId", authUser.cognitoInfo.userId);
 
-    await createProperty(formData);
+    const result = await createProperty(formData);
+    if ("data" in result) {
+      router.push("/managers/properties");
+    }
   };
 
   return (
@@ -214,8 +220,9 @@ const NewProperty = () => {
             <Button
               type="submit"
               className="bg-primary-700 text-white w-full mt-8"
+              disabled={isCreating}
             >
-              Create Property
+              {isCreating ? "Creating..." : "Create Property"}
             </Button>
           </form>
         </Form>

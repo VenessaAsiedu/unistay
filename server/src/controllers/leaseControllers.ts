@@ -5,7 +5,11 @@ const prisma = new PrismaClient();
 
 export const getLeases = async (req: Request, res: Response): Promise<void> => {
   try {
+    // tenants only see their own leases
+    const where =
+      req.user?.role?.toLowerCase() === "tenant" ? { tenantCognitoId: req.user.id } : {};
     const leases = await prisma.lease.findMany({
+      where,
       include: {
         tenant: true,
         property: true,

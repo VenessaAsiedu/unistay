@@ -11,6 +11,7 @@ import managerRoutes from "./routes/managerRoutes";
 import propertyRoutes from "./routes/propertyRoutes";
 import leaseRoutes from "./routes/leaseRoutes";
 import applicationRoutes from "./routes/applicationRoutes";
+import { UPLOADS_DIR } from "./controllers/propertyControllers";
 
 /* CONFIGURATIONS */
 dotenv.config();
@@ -28,6 +29,8 @@ app.get("/", (req, res) => {
   res.send("This is home route");
 });
 
+// locally stored property photos (used when S3 isn't configured)
+app.use("/uploads", express.static(UPLOADS_DIR));
 app.use("/applications", applicationRoutes);
 app.use("/properties", propertyRoutes);
 app.use("/leases", leaseRoutes);

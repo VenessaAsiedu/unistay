@@ -239,17 +239,16 @@ const Residence = () => {
     parseInt(authUser?.cognitoInfo?.userId || "0"),
     { skip: !authUser?.cognitoInfo?.userId }
   );
+  const currentLease = leases?.find(
+    (lease) => lease.propertyId === Number(id)
+  );
   const { data: payments, isLoading: paymentsLoading } = useGetPaymentsQuery(
-    leases?.[0]?.id || 0,
-    { skip: !leases?.[0]?.id }
+    currentLease?.id || 0,
+    { skip: !currentLease?.id }
   );
 
   if (propertyLoading || leasesLoading || paymentsLoading) return <Loading />;
   if (!property || propertyError) return <div>Error loading property</div>;
-
-  const currentLease = leases?.find(
-    (lease) => lease.propertyId === property.id
-  );
 
   return (
     <div className="dashboard-container">

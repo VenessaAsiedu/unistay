@@ -5,8 +5,12 @@ import { S3Client } from "@aws-sdk/client-s3";
 import { Location } from "@prisma/client";
 import { Upload } from "@aws-sdk/lib-storage";
 import axios from "axios";
+import fs from "fs/promises";
+import path from "path";
 
 const prisma = new PrismaClient();
+
+export const UPLOADS_DIR = path.join(__dirname, "..", "..", "uploads");
 
 const s3Client = new S3Client({
   // fallback keeps the server bootable when AWS isn't configured yet;
@@ -184,12 +188,81 @@ export const getProperty = async (
         },
       };
       res.json(propertyWithCoordinates);
+    } else {
+      res.status(404).json({ message: "Property not found" });
     }
   } catch (err: any) {
     res
       .status(500)
       .json({ message: `Error retrieving property: ${err.message}` });
   }
+};
+
+export const getPropertyLeases = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const { id } = req.params;
+    const leases = await prisma.lease.findMany({
+      where: { propertyId: Number(id) },
+      include: {
+        tenant: true,
+        payments: true,
+      },
+    });
+    res.json(leases);
+  } catch (err: any) {
+    res
+      .status(500)
+      .json({ message: `Error retrieving property leases: ${err.message}` });
+  }
+};
+
+// Tries the full address first, then progressively broader searches, so a
+// house name or unknown street still lands the property in the right area
+// instead of at 0,0 (which hides it from every location search).
+const geocodeAddress = async (loc: {
+  address: string;
+  city: string;
+  state: string;
+  country: string;
+  postalCode: string;
+}): Promise<{ longitude: number; latitude: number } | null> => {
+  const queries: Record<string, string>[] = [
+    {
+      street: loc.address,
+      city: loc.city,
+      country: loc.country,
+      postalcode: loc.postalCode,
+    },
+    { street: loc.address, city: loc.city, country: loc.country },
+    { q: [loc.city, loc.state, loc.country].filter(Boolean).join(", ") },
+    { q: [loc.city, loc.country].filter(Boolean).join(", ") },
+    { q: [loc.state, loc.country].filter(Boolean).join(", ") },
+  ];
+
+  for (const query of queries) {
+    try {
+      const { data } = await axios.get(
+        `https://nominatim.openstreetmap.org/search?${new URLSearchParams({
+          ...query,
+          format: "json",
+          limit: "1",
+        }).toString()}`,
+        { headers: { "User-Agent": "UniStay (property geocoding)" } }
+      );
+      if (data[0]?.lon && data[0]?.lat) {
+        return {
+          longitude: parseFloat(data[0].lon),
+          latitude: parseFloat(data[0].lat),
+        };
+      }
+    } catch (err) {
+      console.error("Geocoding request failed:", err);
+    }
+  }
+  return null;
 };
 
 export const createProperty = async (
@@ -208,59 +281,48 @@ export const createProperty = async (
       ...propertyData
     } = req.body;
 
-    // NOTE: the bucket name comes from AWS_BUCKET_NAME (as defined in .env).
-    // This previously read S3_BUCKET_NAME, which is never set, so every upload
-    // failed with an opaque S3 error and the whole request 500'd.
-    const bucket = process.env.AWS_BUCKET_NAME;
-    if (files?.length && !bucket) {
-      res.status(500).json({
+    const coords = await geocodeAddress({
+      address,
+      city,
+      state,
+      country,
+      postalCode,
+    });
+    if (!coords) {
+      res.status(400).json({
         message:
-          "Photo upload is not configured: set AWS_BUCKET_NAME, AWS_REGION, " +
-          "AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY in server/.env",
+          "Could not find this location on the map. Check the city, state and country spelling.",
       });
       return;
     }
+    const { longitude, latitude } = coords;
 
+    // Photos go to S3 when AWS_BUCKET_NAME is set; otherwise (local dev) they
+    // are written to server/uploads and served by Express at /uploads.
+    const bucket = process.env.AWS_BUCKET_NAME;
     const photoUrls = await Promise.all(
-      files.map(async (file) => {
-        const uploadParams = {
-          Bucket: bucket!,
-          Key: `properties/${Date.now()}-${file.originalname}`,
-          Body: file.buffer,
-          ContentType: file.mimetype,
-        };
+      (files ?? []).map(async (file) => {
+        const key = `${Date.now()}-${file.originalname.replace(/[^\w.-]/g, "_")}`;
+
+        if (!bucket) {
+          await fs.mkdir(UPLOADS_DIR, { recursive: true });
+          await fs.writeFile(path.join(UPLOADS_DIR, key), file.buffer);
+          return `/uploads/${key}`;
+        }
 
         const uploadResult = await new Upload({
           client: s3Client,
-          params: uploadParams,
+          params: {
+            Bucket: bucket,
+            Key: `properties/${key}`,
+            Body: file.buffer,
+            ContentType: file.mimetype,
+          },
         }).done();
 
         return uploadResult.Location;
       })
     );
-
-    const geocodingUrl = `https://nominatim.openstreetmap.org/search?${new URLSearchParams(
-      {
-        street: address,
-        city,
-        country,
-        postalcode: postalCode,
-        format: "json",
-        limit: "1",
-      }
-    ).toString()}`;
-    const geocodingResponse = await axios.get(geocodingUrl, {
-      headers: {
-        "User-Agent": "RealEstateApp (justsomedummyemail@gmail.com",
-      },
-    });
-    const [longitude, latitude] =
-      geocodingResponse.data[0]?.lon && geocodingResponse.data[0]?.lat
-        ? [
-            parseFloat(geocodingResponse.data[0]?.lon),
-            parseFloat(geocodingResponse.data[0]?.lat),
-          ]
-        : [0, 0];
 
     // create location
     const [location] = await prisma.$queryRaw<Location[]>`

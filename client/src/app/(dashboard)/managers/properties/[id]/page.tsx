@@ -11,10 +11,10 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import {
-  useGetPaymentsQuery,
   useGetPropertyLeasesQuery,
   useGetPropertyQuery,
 } from "@/state/api";
+import { Lease, Payment } from "@/types/prismaTypes";
 import { ArrowDownToLine, ArrowLeft, Check, Download } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -29,10 +29,13 @@ const PropertyTenants = () => {
     useGetPropertyQuery(propertyId);
   const { data: leases, isLoading: leasesLoading } =
     useGetPropertyLeasesQuery(propertyId);
-  const { data: payments, isLoading: paymentsLoading } =
-    useGetPaymentsQuery(propertyId);
 
-  if (propertyLoading || leasesLoading || paymentsLoading) return <Loading />;
+  if (propertyLoading || leasesLoading) return <Loading />;
+
+  // property leases come back with their payments included
+  const payments = leases?.flatMap(
+    (lease) => (lease as Lease & { payments?: Payment[] }).payments ?? []
+  );
 
   const getCurrentMonthPaymentStatus = (leaseId: number) => {
     const currentDate = new Date();

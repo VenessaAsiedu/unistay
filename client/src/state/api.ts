@@ -11,9 +11,21 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { fetchAuthSession, getCurrentUser } from "aws-amplify/auth";
 import { FiltersState } from ".";
 
+// When the app is opened from another device (e.g. http://192.168.56.1:3000),
+// "localhost" in the API URL would point at that device, so swap in the page's host.
+const resolveApiBaseUrl = () => {
+  const configured = process.env.NEXT_PUBLIC_API_BASE_URL;
+  if (!configured || typeof window === "undefined") return configured;
+  const url = new URL(configured);
+  if (url.hostname === "localhost" || url.hostname === "127.0.0.1") {
+    url.hostname = window.location.hostname;
+  }
+  return url.toString().replace(/\/$/, "");
+};
+
 export const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL,
+    baseUrl: resolveApiBaseUrl(),
     prepareHeaders: async (headers) => {
       const session = await fetchAuthSession();
       const { idToken } = session.tokens ?? {};

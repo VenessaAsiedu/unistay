@@ -13,10 +13,15 @@ const Applications = () => {
     data: applications,
     isLoading,
     isError,
-  } = useGetApplicationsQuery({
-    userId: authUser?.cognitoInfo?.userId,
-    userType: "tenant",
-  });
+  } = useGetApplicationsQuery(
+    {
+      userId: authUser?.cognitoInfo?.userId,
+      userType: "tenant",
+    },
+    {
+      skip: !authUser?.cognitoInfo?.userId,
+    },
+  );
 
   if (isLoading) return <Loading />;
   if (isError || !applications) return <div>Error fetching applications</div>;
