@@ -161,7 +161,7 @@ export const getProperty = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
     const property = await prisma.property.findUnique({
       where: { id: Number(id) },
       include: {
@@ -203,7 +203,7 @@ export const getPropertyLeases = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
     const leases = await prisma.lease.findMany({
       where: { propertyId: Number(id) },
       include: {

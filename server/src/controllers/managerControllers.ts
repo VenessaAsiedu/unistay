@@ -9,7 +9,7 @@ export const getManager = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { cognitoId } = req.params;
+    const { cognitoId } = req.params as { cognitoId: string };
     const manager = await prisma.manager.findUnique({
       where: { cognitoId },
     });
@@ -55,7 +55,7 @@ export const updateManager = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { cognitoId } = req.params;
+    const { cognitoId } = req.params as { cognitoId: string };
     const { name, email, phoneNumber } = req.body;
 
     const updateManager = await prisma.manager.update({
@@ -80,7 +80,7 @@ export const getManagerProperties = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { cognitoId } = req.params;
+    const { cognitoId } = req.params as { cognitoId: string };
     const properties = await prisma.property.findMany({
       where: { managerCognitoId: cognitoId },
       include: {

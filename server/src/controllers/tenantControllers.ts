@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 
 export const getTenant = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { cognitoId } = req.params;
+    const { cognitoId } = req.params as { cognitoId: string };
     const tenant = await prisma.tenant.findUnique({
       where: { cognitoId },
       include: {
@@ -55,7 +55,7 @@ export const updateTenant = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { cognitoId } = req.params;
+    const { cognitoId } = req.params as { cognitoId: string };
     const { name, email, phoneNumber } = req.body;
 
     const updateTenant = await prisma.tenant.update({
@@ -80,7 +80,7 @@ export const getCurrentResidences = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { cognitoId } = req.params;
+    const { cognitoId } = req.params as { cognitoId: string };
     const properties = await prisma.property.findMany({
       where: { tenants: { some: { cognitoId } } },
       include: {
@@ -123,7 +123,10 @@ export const addFavoriteProperty = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { cognitoId, propertyId } = req.params;
+    const { cognitoId, propertyId } = req.params as {
+      cognitoId: string;
+      propertyId: string;
+    };
     const tenant = await prisma.tenant.findUnique({
       where: { cognitoId },
       include: { favorites: true },
@@ -163,7 +166,10 @@ export const removeFavoriteProperty = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { cognitoId, propertyId } = req.params;
+    const { cognitoId, propertyId } = req.params as {
+      cognitoId: string;
+      propertyId: string;
+    };
     const propertyIdNumber = Number(propertyId);
 
     const updatedTenant = await prisma.tenant.update({

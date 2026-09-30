@@ -73,7 +73,12 @@ export const withToast = async <T>(
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const logQueryError = (label: string | undefined, err: any) => {
   const inner = err?.error ?? err;
-  console.error(label ?? "Request failed", {
+  // Put the status/reason in the message itself: the Next.js dev overlay
+  // renders the object argument as "{}", hiding the actual cause.
+  const reason = [inner?.status, inner?.data?.message ?? inner?.error ?? inner?.message]
+    .filter(Boolean)
+    .join(" – ");
+  console.error(`${label ?? "Request failed"}${reason ? ` (${reason})` : ""}`, {
     status: inner?.status,
     data: inner?.data,
     message: inner?.message ?? inner?.error,
