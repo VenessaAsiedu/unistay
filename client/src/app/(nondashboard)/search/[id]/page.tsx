@@ -21,14 +21,14 @@ const SingleListing = () => {
       <ImagePreviews
         images={["/singlelisting-2.jpg", "/singlelisting-3.jpg"]}
       />
-      <div className="flex flex-col md:flex-row justify-center gap-10 mx-10 md:w-2/3 md:mx-auto mt-16 mb-8">
-        <div className="order-2 md:order-1">
+      <div className="flex flex-col lg:flex-row justify-center gap-10 mx-4 sm:mx-10 lg:w-2/3 lg:mx-auto mt-8 sm:mt-16 mb-8">
+        <div className="min-w-0 lg:flex-1">
           <PropertyOverview propertyId={propertyId} />
           <PropertyDetails propertyId={propertyId} />
           <PropertyLocation propertyId={propertyId} />
         </div>
 
-        <div className="order-1 md:order-2">
+        <div>
           <ContactWidget onOpenModal={() => setIsModalOpen(true)} />
         </div>
       </div>

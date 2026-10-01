@@ -97,9 +97,10 @@ const FiltersBar = () => {
   };
 
   return (
-    <div className="flex justify-between items-center w-full py-5">
+    // phones: one row that scrolls sideways; tablets & up: filters wrap onto extra lines
+    <div className="flex justify-between items-center gap-2 w-full py-2 md:py-5 overflow-x-auto md:overflow-visible [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
       {/* Filters */}
-      <div className="flex justify-between items-center gap-4 p-2">
+      <div className="flex items-center gap-2 md:gap-4 p-2 md:flex-wrap">
         {/* All Filters */}
         <Button
           variant="outline"

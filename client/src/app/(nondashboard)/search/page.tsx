@@ -40,24 +40,25 @@ const SearchPage = () => {
 
   return (
     <div
-      className="w-full mx-auto px-5 flex flex-col"
+      className="w-full mx-auto px-3 sm:px-5 flex flex-col"
       style={{
-        height: `calc(100vh - ${NAVBAR_HEIGHT}px)`,
+        height: `calc(100dvh - ${NAVBAR_HEIGHT}px)`,
       }}
     >
       <FiltersBar />
-      <div className="flex justify-between flex-1 overflow-hidden gap-3 mb-5">
+      {/* phones & tablets: map strip above the listings; desktop: side by side */}
+      <div className="relative flex flex-col lg:flex-row justify-between flex-1 min-h-0 overflow-hidden gap-3 mb-3 lg:mb-5">
         <div
-          className={`h-full overflow-auto transition-all duration-300 ease-in-out ${
+          className={`overflow-auto transition-all duration-300 ease-in-out lg:static lg:h-full lg:block ${
             isFiltersFullOpen
-              ? "w-3/12 opacity-100 visible"
-              : "w-0 opacity-0 invisible"
+              ? "absolute inset-0 z-20 bg-white w-full lg:w-3/12 opacity-100 visible"
+              : "hidden lg:w-0 lg:opacity-0 lg:invisible"
           }`}
         >
           <FiltersFull />
         </div>
         <Map />
-        <div className="basis-4/12 overflow-y-auto">
+        <div className="flex-1 min-h-0 lg:flex-none lg:basis-4/12 overflow-y-auto">
           <Listings />
         </div>
       </div>

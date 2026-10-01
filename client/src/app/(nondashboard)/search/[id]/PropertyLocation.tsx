@@ -53,7 +53,7 @@ const PropertyLocation = ({ propertyId }: PropertyDetailsProps) => {
       <h3 className="text-xl font-semibold text-primary-800 dark:text-primary-100">
         Map and Location
       </h3>
-      <div className="flex justify-between items-center text-sm text-primary-500 mt-2">
+      <div className="flex flex-wrap justify-between items-center gap-2 text-sm text-primary-500 mt-2">
         <div className="flex items-center text-gray-500">
           <MapPin className="w-4 h-4 mr-1 text-gray-700" />
           Property Address:
