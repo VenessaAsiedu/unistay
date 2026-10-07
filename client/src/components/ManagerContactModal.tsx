@@ -27,14 +27,20 @@ export default function ManagerContactModal({ isOpen, onClose, manager }: Manage
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-      <div className="relative w-full max-w-md rounded-xl bg-white p-6 shadow-xl dark:bg-zinc-900 z-50">
+    <div 
+      onClick={onClose} 
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+    >
+      <div 
+        onClick={(e) => e.stopPropagation()} 
+        className="relative w-full max-w-md rounded-xl bg-white p-6 shadow-xl dark:bg-zinc-900 z-50"
+      >
         
-        {/* Close Button with explicit cursor-pointer and high z-index */}
+        {/* Close Button */}
         <button 
           type="button"
-          onClick={() => {
-            console.log("Close icon clicked!"); // Check if this logs in browser F12 console
+          onClick={(e) => {
+            e.stopPropagation();
             onClose();
           }}
           className="absolute top-4 right-4 z-50 p-2 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 cursor-pointer"
