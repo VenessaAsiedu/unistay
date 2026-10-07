@@ -14,9 +14,10 @@ interface ManagerContactModalProps {
   onClose: () => void;
   manager?: Manager;
 }
-export default function ManagerContactModal({ isOpen, onClose, manager }: ManagerContactModalProps) {
 
-  // Fallback manager details if none provided via props
+export default function ManagerContactModal({ isOpen, onClose, manager }: ManagerContactModalProps) {
+  if (!isOpen) return null;
+
   const managerDetails = manager || {
     name: 'Sarah Jenkins',
     role: 'Property Manager',
@@ -29,7 +30,7 @@ export default function ManagerContactModal({ isOpen, onClose, manager }: Manage
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
       <div className="relative w-full max-w-md rounded-xl bg-white p-6 shadow-xl dark:bg-zinc-900">
         
-        {/* Close Button */}
+        {/* Close Button - Added onClick={onClose} here */}
         <button 
           onClick={onClose}
           className="absolute top-4 right-4 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200"
