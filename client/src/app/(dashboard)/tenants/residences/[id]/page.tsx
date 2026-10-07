@@ -28,7 +28,8 @@ import {
   User,
 } from "lucide-react";
 import { useParams } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
+import ManagerContactModal from "@/components/ManagerContactModal";
 
 const PaymentMethod = () => {
   return (
@@ -78,9 +79,11 @@ const PaymentMethod = () => {
 const ResidenceCard = ({
   property,
   currentLease,
+  onOpenManagerModal,
 }: {
   property: Property;
   currentLease: Lease;
+  onOpenManagerModal: () => void;
 }) => {
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden p-6 flex-1 flex flex-col justify-between">
@@ -137,7 +140,10 @@ const ResidenceCard = ({
       </div>
       {/* Buttons */}
       <div className="flex justify-end gap-2 w-full">
-        <button className="bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-md flex items-center justify-center hover:bg-primary-700 hover:text-primary-50">
+        <button 
+          onClick={onOpenManagerModal}
+          className="bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-md flex items-center justify-center hover:bg-primary-700 hover:text-primary-50"
+        >
           <User className="w-5 h-5 mr-2" />
           Manager
         </button>
@@ -228,6 +234,8 @@ const BillingHistory = ({ payments }: { payments: Payment[] }) => {
 
 const Residence = () => {
   const { id } = useParams();
+  const [isManagerModalOpen, setIsManagerModalOpen] = useState(false);
+
   const { data: authUser } = useGetAuthUserQuery();
   const {
     data: property,
@@ -255,12 +263,22 @@ const Residence = () => {
       <div className="w-full mx-auto">
         <div className="md:flex gap-10">
           {currentLease && (
-            <ResidenceCard property={property} currentLease={currentLease} />
+            <ResidenceCard 
+              property={property} 
+              currentLease={currentLease} 
+              onOpenManagerModal={() => setIsManagerModalOpen(true)}
+            />
           )}
           <PaymentMethod />
         </div>
         <BillingHistory payments={payments || []} />
       </div>
+
+      {/* Manager Contact Modal Component */}
+      <ManagerContactModal
+        isOpen={isManagerModalOpen}
+        onClose={() => setIsManagerModalOpen(false)}
+      />
     </div>
   );
 };
