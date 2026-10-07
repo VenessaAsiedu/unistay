@@ -28,12 +28,16 @@ export default function ManagerContactModal({ isOpen, onClose, manager }: Manage
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-      <div className="relative w-full max-w-md rounded-xl bg-white p-6 shadow-xl dark:bg-zinc-900">
+      <div className="relative w-full max-w-md rounded-xl bg-white p-6 shadow-xl dark:bg-zinc-900 z-50">
         
-        {/* Close Button - Added onClick={onClose} here */}
+        {/* Close Button with explicit cursor-pointer and high z-index */}
         <button 
-          onClick={onClose}
-          className="absolute top-4 right-4 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200"
+          type="button"
+          onClick={() => {
+            console.log("Close icon clicked!"); // Check if this logs in browser F12 console
+            onClose();
+          }}
+          className="absolute top-4 right-4 z-50 p-2 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 cursor-pointer"
         >
           <X className="h-5 w-5" />
         </button>
@@ -91,8 +95,9 @@ export default function ManagerContactModal({ isOpen, onClose, manager }: Manage
             Call Manager
           </a>
           <button 
+            type="button"
             onClick={onClose}
-            className="flex-1 bg-zinc-100 text-zinc-700 text-center py-2.5 rounded-lg font-medium hover:bg-zinc-200 transition dark:bg-zinc-800 dark:text-zinc-300"
+            className="flex-1 bg-zinc-100 text-zinc-700 text-center py-2.5 rounded-lg font-medium hover:bg-zinc-200 transition dark:bg-zinc-800 dark:text-zinc-300 cursor-pointer"
           >
             Close
           </button>
