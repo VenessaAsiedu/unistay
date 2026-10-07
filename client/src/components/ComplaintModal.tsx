@@ -19,38 +19,39 @@ export default function ComplaintModal({ isOpen, onClose, propertyId, tenantId }
 
   if (!isOpen) return null;
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    try {
-      // If you have a backend endpoint setup, use it here. 
-      // For now, simulate a successful submission if the endpoint isn't active yet:
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      
+    // Simulate successful submission instantly
+    setTimeout(() => {
+      setIsSubmitting(false);
       setSuccessMessage(true);
+      
       setTimeout(() => {
         setSuccessMessage(false);
-        setIsSubmitting(false);
-        onClose();
         setSubject('');
         setMessage('');
-      }, 2000);
-    } catch (error) {
-      console.error('Error submitting complaint:', error);
-      setIsSubmitting(false);
-      alert('Failed to submit complaint.');
-    }
+        onClose();
+      }, 1500);
+    }, 800);
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-      <div className="relative w-full max-w-lg rounded-xl bg-white p-6 shadow-xl dark:bg-zinc-900 z-50" onClick={(e) => e.stopPropagation()}>
+    <div 
+      onClick={onClose}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+    >
+      <div 
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-lg rounded-xl bg-white p-6 shadow-xl dark:bg-zinc-900 z-50"
+      >
         
         {/* Close Button */}
         <button 
+          type="button"
           onClick={onClose}
-          className="absolute top-4 right-4 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200"
+          className="absolute top-4 right-4 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 cursor-pointer"
         >
           <X className="h-5 w-5" />
         </button>
